@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dojo課題</title>
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+header {
+  background-color: #1aaedb;
+  border-bottom: #ead963 6px solid;
+}
+.container {
+  padding: 16px;
+  padding-left: 120px;
+}
+header h1,
+header h2 {
+  margin: 0;
+  color: #fff;
+  line-height: 1;
+}
+header h1 {
+  padding: 30px 0 5px 0;
+  font-size: 24px;
+  border-bottom: 1px dotted #fff;
+  font-weight: 500;
+}
+header h2 {
+  padding: 6px 0 0 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>kintone dojo</h1>
+    <h2>JavaScript課題①</h2>
+  </div>
+</header>
+<main class="container">
+  <div>
+    <h1>ファイル管理一覧</h1>
+    <h2>全てのフォルダとアクセス権を表示</h2>
+    <table id="createTable">
+    </table>
+    <h2>閲覧権限が全員にあるフォルダ</h2>
+  </div>
+</main>
+<script>
+  // ここに処理を追記
+  const fileManage = {
+    f001: {
+      folderName: "情報システム部",
+      viewAuth: "Everyone",
+      editAuth: "情報システム部",
+      deleteAuth: "情報システム部"
+    },
+    f002: {
+      folderName: "経営管理部",
+      viewAuth: "経営管理部",
+      editAuth: "経営管理部",
+      deleteAuth: "経営管理部"
+    },
+    f003: {
+      folderName: "営業部",
+      viewAuth: "Everyone",
+      editAuth: "営業部",
+      deleteAuth: "営業部"
+    },
+  }
+
+  const theadNameinJA = {
+    key1: "フォルダ名",
+    key2: "閲覧権限",
+    key3: "編集権限",
+    key4: "削除権限"
+  }
+
+  const createTable = document.getElementById('createTable');
+  // const trow = document.createElement('trow');
+  // trow.textContent = theadNameinJA.key1;
+  // createTable.appendChild(trow);
+
+  const head = Object.keys(theadNameinJA);
+  head.forEach((hkey) => {
+    const trow = document.createElement('trow');
+    trow.textContent = theadNameinJA[hkey] + '  ';
+
+    createTable.appendChild(trow);
+  });
+  
+  const cell = Object.keys(fileManage);
+  cell.forEach((key) => {
+    const cellData = document.createElement('cellData');
+    cellData.textContent = fileManage[key];
+    console.log(fileManage[key]);
+    createTable.appendChild(cellData);
+  });
+
+
+
+  // headKey.forEach((hKey) => {
+  //   //const trow = document.createElement('thRow');
+  //   console.log(hkey);
+
+  //   // forEach((tKey) => {
+  //   //   const cell = document.createElement('cellData')
+
+  //   // })
+  //   headKey.appendChild(headKey)
+  // });
+  
+
+
+  // table.appendChild(thead);
+  // table.appendChild(tbody);
+
+  // document.getElementById('body').appendChild(table);
+
+  // const table = document.createElement('table');
+  // const thead = document.createElement('thead');
+  // const tbody = document.createElement('tbody');
+
+
+</script>
+</body>
+</html>

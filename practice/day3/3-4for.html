@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dojo課題</title>
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+header {
+  background-color: #1aaedb;
+  border-bottom: #ead963 6px solid;
+}
+.container {
+  padding: 16px;
+  padding-left: 120px;
+}
+header h1,
+header h2 {
+  margin: 0;
+  color: #fff;
+  line-height: 1;
+}
+header h1 {
+  padding: 30px 0 5px 0;
+  font-size: 24px;
+  border-bottom: 1px dotted #fff;
+  font-weight: 500;
+}
+header h2 {
+  padding: 6px 0 0 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>kintone dojo</h1>
+    <h2>JavaScript課題①</h2>
+  </div>
+</header>
+<main class="container">
+  <p id = "title"></p>
+
+  <p id = "actor"></p>
+
+  <p id = "place"></p>
+
+  <p id = "detail"></p>
+
+</main>
+  </div>
+</main>
+<script>
+  // ここに処理を追記
+  'use strict';
+
+  // const weekDay = ['日','月','火','水','木','金','土'];
+  
+  // for (let i = 0; i < weekDay.length; i ++){
+  //   console.log(weekDay[i]);
+  // }
+
+  // weekDay.forEach((day) => {
+  //   console.log(day);
+  // });
+
+  const eventInfo = {
+    title: '53とあそぼ',
+    actor: 'GO皆川',
+    place: 'ティアラこうとう',
+    detail: 'GO皆川がホールの中を歩き回る番組です'
+  };
+
+  const keys = Object.keys(eventInfo);
+  keys.forEach((key) => {
+    document.getElementById(key).textContent = eventInfo[key];
+  });
+
+  // document.getElementById('title').textContent = eventInfo.title;
+  // document.getElementById('title').textContent = eventInfo.actor;
+  // document.getElementById('title').textContent = eventInfo.place;
+  // document.getElementById('title').textContent = eventInfo.detail;
+
+  
+</script>
+</body>
+</html>
