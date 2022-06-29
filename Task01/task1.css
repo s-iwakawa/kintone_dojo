@@ -1,8 +1,8 @@
 /* ここに記載する */
 table {
   width: 100%;
+  border-spacing: 0px; /*①スペーシングを０にして白余白を消去*/
 }
-
 table td {
   width: 100%;
   text-align: center;
@@ -12,6 +12,20 @@ table td {
   height: auto;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+/*②各製品のclassを作成*/
+.tr_kintone{
+ background-color:  #ffbf00;
+}
+.tr_office{
+  background-color: #1992d4;
+}
+.tr_garoon{
+  background-color: #003399;
+}
+.tr_mailwise{
+  background-color: #df4356;
 }
 
 /* 以下は修正しない */
