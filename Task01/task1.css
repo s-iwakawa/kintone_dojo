@@ -2,29 +2,26 @@
 .product_image {
   max-width: 80vw; 
   height: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
 }
 
-/*②各製品のclassを作成*/
-.section_kintone{
+/*セクションの幅と配置をセンターに指定する*/
+.section_position {
   width: 100%;
-  text-align: center; 
+  text-align: center;
+}
+
+/*各製品のclassを作成*/
+.section_kintone{
   background-color:  #ffbf00;
 }
 .section_office{
-  width: 100%;
-  text-align: center;
   background-color: #1992d4;
 }
 .section_garoon{
-  width: 100%;
-  text-align: center;
   background-color: #003399;
 }
 .section_mailwise{
-  width: 100%;
-  text-align: center;
   background-color: #df4356;
 }
 
