@@ -1,13 +1,5 @@
 /* ここに記載する */
-table {
-  width: 100%;
-  border-spacing: 0px; /*①スペーシングを０にして白余白を消去*/
-}
-table td {
-  width: 100%;
-  text-align: center;
-}
-.resizeimage {
+.product_image {
   max-width: 80vw; 
   height: auto;
   margin-top: 10px;
@@ -15,16 +7,24 @@ table td {
 }
 
 /*②各製品のclassを作成*/
-.tr_kintone{
- background-color:  #ffbf00;
+.section_kintone{
+  width: 100%;
+  text-align: center; 
+  background-color:  #ffbf00;
 }
-.tr_office{
+.section_office{
+  width: 100%;
+  text-align: center;
   background-color: #1992d4;
 }
-.tr_garoon{
+.section_garoon{
+  width: 100%;
+  text-align: center;
   background-color: #003399;
 }
-.tr_mailwise{
+.section_mailwise{
+  width: 100%;
+  text-align: center;
   background-color: #df4356;
 }
 
