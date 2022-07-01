@@ -1,0 +1,58 @@
+/* ここに記載する */
+.product_image {
+  max-width: 80vw; 
+  height: auto;
+  margin: 10px;
+}
+
+/*セクションの幅と配置をセンターに指定する*/
+.section_position {
+  width: 100%;
+  text-align: center;
+}
+
+/*各製品のclassを作成*/
+.section_kintone{
+  background-color:  #ffbf00;
+}
+.section_office{
+  background-color: #1992d4;
+}
+.section_garoon{
+  background-color: #003399;
+}
+.section_mailwise{
+  background-color: #df4356;
+}
+
+/* 以下は修正しない */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+header {
+  background-color: #1aaedb;
+  border-bottom: #ead963 6px solid;
+}
+.container {
+  padding: 16px;
+  padding-left: 120px;
+}
+header h1,
+header h2 {
+  margin: 0;
+  color: #fff;
+  line-height: 1;
+}
+header h1 {
+  padding: 30px 0 5px 0;
+  font-size: 24px;
+  border-bottom: 1px dotted #fff;
+  font-weight: 500;
+}
+header h2 {
+  padding: 6px 0 0 0;
+  font-size: 14px;
+  font-weight: 400;
+}
