@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dojo課題</title>
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+header {
+  background-color: #1aaedb;
+  border-bottom: #ead963 6px solid;
+}
+.container {
+  padding: 16px;
+  padding-left: 120px;
+}
+header h1,
+header h2 {
+  margin: 0;
+  color: #fff;
+  line-height: 1;
+}
+header h1 {
+  padding: 30px 0 5px 0;
+  font-size: 24px;
+  border-bottom: 1px dotted #fff;
+  font-weight: 500;
+}
+header h2 {
+  padding: 6px 0 0 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>kintone dojo</h1>
+    <h2>JavaScript課題③</h2>
+  </div>
+</header>
+<main class="container">
+  <h1>kintone のライセンス料</h1>
+  <div class="user">最低ユーザー数(ライトコース)での利用料金</div><br/>
+  <input type="checkbox" class="chk" value="250"/>セキュアオプション（1ユーザー あたり 250円）<br/>
+  <input type="checkbox" class="chk" value="1000"/>ディスク増設（10GB あたり 1000円）<br/>
+  <h3>月額金額：<span id="price">3900</span>円</h3>
+</main>
+<script>
+  'use strict'
+  //各料金の単価
+  const defPrice = 3900;
+  const secureOptionPrice = 250; // ¥1000 per user
+  const storageOptionPrice = 1000; // ¥1000 per 10GB
+  let numOfUser = 0;
+  let ammount = 0;
+  
+  //追加料金計算関数の定義
+  let calcNewPrice = (numOfUser, ammount) => {
+    const addSecureOption = secureOptionPrice * numOfUser;
+    const addStorageOption = storageOptionPrice * ammount;
+    return defPrice + addSecureOption + addStorageOption;
+  };
+  
+  //セキュアオプションの条件分岐
+  const chk1 = document.getElementsByClassName('chk')[0];
+  chk1.onchange = () => {
+    if (chk1.checked) {
+      numOfUser = 5;
+      //料金の書き換え
+    }else{
+      numOfUser = 0;
+    };
+    document.getElementById('price').textContent = calcNewPrice(numOfUser, ammount);
+  };
+
+  const chk2 = document.getElementsByClassName('chk')[1];
+  chk2.onchange = () => {
+    if (chk2.checked) {
+      ammount = 1;
+    }else{
+      ammount = 0;
+    };
+    document.getElementById('price').textContent = calcNewPrice(numOfUser, ammount);;
+  };
+</script>
+</body>
+</html>

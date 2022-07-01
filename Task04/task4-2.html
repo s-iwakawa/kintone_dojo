@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dojo課題</title>
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+header {
+  background-color: #1aaedb;
+  border-bottom: #ead963 6px solid;
+}
+.container {
+  padding: 16px;
+  padding-left: 120px;
+}
+header h1,
+header h2 {
+  margin: 0;
+  color: #fff;
+  line-height: 1;
+}
+header h1 {
+  padding: 30px 0 5px 0;
+  font-size: 24px;
+  border-bottom: 1px dotted #fff;
+  font-weight: 500;
+}
+header h2 {
+  padding: 6px 0 0 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>kintone dojo</h1>
+    <h2>JavaScript課題③</h2>
+  </div>
+</header>
+<main class="container">
+  <h1>kintone のライセンス料</h1>
+  <div class="user">最低ユーザー数(ライトコース)での利用料金</div>
+  <br/>
+  <input type="checkbox" class="chk" value="250"/>セキュアオプション（1ユーザー あたり 250円） ×
+  <select class="slct">
+    <option value="1">1名</option>
+    <option value="2">2名</option>
+    <option value="3">3名</option>
+    <option value="4">4名</option>
+    <option value="5">5名</option>
+  </select><br/>
+  <input type="checkbox" class="chk" value="1000"/>ディスク増設（10GB あたり 1000円） ×
+  <select class="slct">
+    <option value="1">10GB</option>
+    <option value="2">20GB</option>
+    <option value="3">30GB</option>
+    <option value="4">40GB</option>
+    <option value="5">50GB</option>
+  </select><br/>
+  <h3>月額金額：<span id="price">3900</span>円</h3>
+  <button id="btn">計算</button>
+</main>
+<script>
+    'use strict'
+  //各料金の単価
+  const defPrice = 3900;
+  const secureOptionPrice = 250; // ¥1000 per user
+  const storageOptionPrice = 1000; // ¥1000 per 10GB
+  let numOfUser = 0;
+  let ammount = 0;
+  let flagSecure = 0;
+  let flagDisk = 0;
+  
+  //追加料金計算関数の定義
+  let calcNewPrice = (numOfUser, ammount) => {
+    const addSecureOption = secureOptionPrice * numOfUser;
+    const addStorageOption = storageOptionPrice * ammount;
+    return defPrice + addSecureOption + addStorageOption;
+  };
+  
+  //セキュアオプションのflag
+  const secureChk1 = document.getElementsByClassName('chk')[0];
+  secureChk1.onchange = () => {
+    if (secureChk1.checked) {
+      flagSecure = 1;
+      numOfUser = document.getElementsByClassName('slct')[0].value;
+      //料金の書き換え
+    }else{
+      flagSecure = 0;
+      numOfUser = 0;
+    };
+  };
+
+  //プルダウンが変更された際の処理
+  const secureChk2 = document.getElementsByClassName('slct')[0];
+  secureChk2.onchange = () => {
+    if (flagSecure === 1) {
+      numOfUser = document.getElementsByClassName('slct')[0].value;
+    }else{
+      numOfUser = 0;
+    };
+  };
+
+  //ディスク増設のflag
+  const diskChk1 = document.getElementsByClassName('chk')[1];
+  diskChk1.onchange = () => {
+    if (diskChk1.checked) {
+      flagDisk = 1;
+      ammount = document.getElementsByClassName('slct')[1].value;
+    }else{
+      flagDisk = 0;
+      ammount = 0;
+    };
+  };
+
+  //プルダウンが変更された際の処理
+  const diskChk2 = document.getElementsByClassName('slct')[1];
+  diskChk2.onchange = () => {
+    if (flagDisk === 1) {
+      ammount = document.getElementsByClassName('slct')[1].value;
+    }else{
+      ammount = 0;
+    };
+  };
+  
+  const calc = document.getElementById('btn').onclick = () => {
+    document.getElementById('price').textContent = calcNewPrice(numOfUser, ammount);
+  };
+</script>
+</body>
+</html>
