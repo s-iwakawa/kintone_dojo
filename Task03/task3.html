@@ -114,27 +114,27 @@ li {
     },
   };
 
-  //空リストの作成
-  let listOfEveryone = [];
 
   //ループ処理で表を作成
-  const cell = Object.keys(fileManage);
-  cell.forEach((key) => {
-    cellData = Object.keys(fileManage[key]);
-    cellData.forEach((val) => {
+  const cell = Object.keys(fileManage).forEach((key) => {
+    const cellData = Object.keys(fileManage[key]).forEach((val) => {
       document.getElementById(key + '-' + val).textContent = fileManage[key][val];
-      
-      //条件分岐でviewAuthがeveryoneの時だけリストに追加する処理
-      if(fileManage[key][val] === 'Everyone' && val === 'viewAuth') {
-        listOfEveryone.push(fileManage[key]['folderName']);
-      };
-
     })
+
+    //listの要素を取得
+    const ul = document.getElementById('list');
+    
+    //条件分岐でviewAuthがeveryoneの時だけリストに追加する処理
+    if(fileManage[key]['viewAuth'] === 'Everyone') {
+      
+      //li要素を作成
+      const li = document.createElement('li');
+      li.textContent = fileManage[key]['folderName'];
+      ul.appendChild(li);
+    };
+
+
   });
-
-  //リストの表示
-  document.getElementById('list').innerText = '・' + listOfEveryone.join('\n' + '・');  //先頭に'・'をつけて、２個目以降にも追加する
-
 </script>
 </body>
 </html>
