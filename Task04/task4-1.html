@@ -53,40 +53,29 @@ header h2 {
 <script>
   'use strict'
   //各料金の単価
-  const defPrice = 3900;
-  const secureOptionPrice = 250; // ¥1000 per user
-  const storageOptionPrice = 1000; // ¥1000 per 10GB
-  let numOfUser = 0;
-  let ammount = 0;
-  
-  //追加料金計算関数の定義
-  let calcNewPrice = (numOfUser, ammount) => {
-    const addSecureOption = secureOptionPrice * numOfUser;
-    const addStorageOption = storageOptionPrice * ammount;
-    return defPrice + addSecureOption + addStorageOption;
-  };
+  let defPrice = 3900;
+  const secureOptionPrice = document.getElementsByClassName('chk')[0].value; // ¥250 per user
+  const storageOptionPrice = document.getElementsByClassName('chk')[1].value; // ¥1000 per 10GB
   
   //セキュアオプションの条件分岐
-  const chk1 = document.getElementsByClassName('chk')[0];
-  chk1.onchange = () => {
-    if (chk1.checked) {
-      numOfUser = 5;
-      //料金の書き換え
+  const chkArray = document.getElementsByClassName('chk');
+  chkArray[0].onchange = () => {
+    if(chkArray[0].checked) {
+      defPrice += Number(secureOptionPrice) * 5;
     }else{
-      numOfUser = 0;
-    };
-    document.getElementById('price').textContent = calcNewPrice(numOfUser, ammount);
-  };
+      defPrice -= Number(secureOptionPrice) * 5;
+    }
+    document.getElementById('price').textContent = defPrice;
+  }
+  chkArray[1].onchange = () => {
+    if(chkArray[1].checked) {
+      defPrice += Number(storageOptionPrice);
+    }else{
+      defPrice -= Number(storageOptionPrice);
+    }
+    document.getElementById('price').textContent = defPrice;
+  }
 
-  const chk2 = document.getElementsByClassName('chk')[1];
-  chk2.onchange = () => {
-    if (chk2.checked) {
-      ammount = 1;
-    }else{
-      ammount = 0;
-    };
-    document.getElementById('price').textContent = calcNewPrice(numOfUser, ammount);;
-  };
 </script>
 </body>
 </html>

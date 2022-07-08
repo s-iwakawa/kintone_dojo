@@ -70,67 +70,29 @@ header h2 {
     'use strict'
   //各料金の単価
   const defPrice = 3900;
-  const secureOptionPrice = 250; // ¥1000 per user
-  const storageOptionPrice = 1000; // ¥1000 per 10GB
-  let numOfUser = 0;
-  let ammount = 0;
-  let flagSecure = 0;
-  let flagDisk = 0;
+  const secureOptionPrice = document.getElementsByClassName('chk')[0].value; // ¥250 per user
+  const storageOptionPrice = document.getElementsByClassName('chk')[1].value; // ¥1000 per 10GB
   
-  //追加料金計算関数の定義
-  let calcNewPrice = (numOfUser, ammount) => {
-    const addSecureOption = secureOptionPrice * numOfUser;
-    const addStorageOption = storageOptionPrice * ammount;
-    return defPrice + addSecureOption + addStorageOption;
-  };
-  
-  //セキュアオプションのflag
-  const secureChk1 = document.getElementsByClassName('chk')[0];
-  secureChk1.onchange = () => {
-    if (secureChk1.checked) {
-      flagSecure = 1;
-      numOfUser = document.getElementsByClassName('slct')[0].value;
-      //料金の書き換え
-    }else{
-      flagSecure = 0;
-      numOfUser = 0;
-    };
-  };
-
-  //プルダウンが変更された際の処理
-  const secureChk2 = document.getElementsByClassName('slct')[0];
-  secureChk2.onchange = () => {
-    if (flagSecure === 1) {
-      numOfUser = document.getElementsByClassName('slct')[0].value;
-    }else{
-      numOfUser = 0;
-    };
-  };
-
-  //ディスク増設のflag
-  const diskChk1 = document.getElementsByClassName('chk')[1];
-  diskChk1.onchange = () => {
-    if (diskChk1.checked) {
-      flagDisk = 1;
-      ammount = document.getElementsByClassName('slct')[1].value;
-    }else{
-      flagDisk = 0;
-      ammount = 0;
-    };
-  };
-
-  //プルダウンが変更された際の処理
-  const diskChk2 = document.getElementsByClassName('slct')[1];
-  diskChk2.onchange = () => {
-    if (flagDisk === 1) {
-      ammount = document.getElementsByClassName('slct')[1].value;
-    }else{
-      ammount = 0;
-    };
-  };
-  
+  //btnのクリックで動作する
   const calc = document.getElementById('btn').onclick = () => {
-    document.getElementById('price').textContent = calcNewPrice(numOfUser, ammount);
+    
+    let numOfUser = 0;
+    let ammount = 0;
+
+    //セキュアオプションのチェックボックスの状態の取得
+    const secureChk = document.getElementsByClassName('chk')[0];
+    if (secureChk.checked) { 
+      numOfUser = document.getElementsByClassName('slct')[0].value;
+    };
+    
+    //ディスク増設のチェックボックスの状態の取得
+    const diskChk = document.getElementsByClassName('chk')[1];
+    if (diskChk.checked) {
+      ammount = document.getElementsByClassName('slct')[1].value;
+    };
+
+    const calcNewPrice = defPrice + secureOptionPrice * numOfUser + storageOptionPrice * ammount;
+    document.getElementById('price').textContent = calcNewPrice;
   };
 </script>
 </body>
