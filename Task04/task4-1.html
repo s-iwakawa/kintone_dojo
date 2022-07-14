@@ -54,11 +54,11 @@ header h2 {
   'use strict'
   //各料金の単価
   let defPrice = 3900;
-  const secureOptionPrice = document.getElementsByClassName('chk')[0].value; // ¥250 per user
-  const storageOptionPrice = document.getElementsByClassName('chk')[1].value; // ¥1000 per 10GB
-  
-  //セキュアオプションの条件分岐
   const chkArray = document.getElementsByClassName('chk');
+  const secureOptionPrice = chkArray[0].value; // ¥250 per user
+  const storageOptionPrice = chkArray[1].value; // ¥1000 per 10GB
+
+  //セキュアオプションの条件分岐
   chkArray[0].onchange = () => {
     if(chkArray[0].checked) {
       defPrice += Number(secureOptionPrice) * 5;

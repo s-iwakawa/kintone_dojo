@@ -70,24 +70,20 @@ header h2 {
     'use strict'
   //各料金の単価
   const defPrice = 3900;
-  const secureOptionPrice = document.getElementsByClassName('chk')[0].value; // ¥250 per user
-  const storageOptionPrice = document.getElementsByClassName('chk')[1].value; // ¥1000 per 10GB
-  
+  const chkArray = document.getElementsByClassName('chk');
+  const secureOptionPrice = chkArray[0].value; // ¥250 per user
+  const storageOptionPrice = chkArray[1].value; // ¥1000 per 10GB
+
   //btnのクリックで動作する
   const calc = document.getElementById('btn').onclick = () => {
-    
     let numOfUser = 0;
     let ammount = 0;
-
     //セキュアオプションのチェックボックスの状態の取得
-    const secureChk = document.getElementsByClassName('chk')[0];
-    if (secureChk.checked) { 
+    if (chkArray[0].checked) {
       numOfUser = document.getElementsByClassName('slct')[0].value;
     };
-    
     //ディスク増設のチェックボックスの状態の取得
-    const diskChk = document.getElementsByClassName('chk')[1];
-    if (diskChk.checked) {
+    if (chkArray[1].checked) {
       ammount = document.getElementsByClassName('slct')[1].value;
     };
 
