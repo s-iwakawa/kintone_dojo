@@ -12,11 +12,10 @@
 			const lookupArray = response.records;
 
 			//参照したデータ配列の数、処理を繰り返す
-			lookupArray.some((key) => {
-
+			for (let count = 0; count <= lookupArray.length; count++) {
 				//比較する重複禁止項目の文字列の定義
 				const currentData = event.record.重複禁止項目.value;
-				const chkStr = key.重複禁止項目.value;
+				const chkStr = lookupArray[count].重複禁止項目.value;
 
 				//保存しようとしている重複禁止項目と他のレコードに保存された項目の比較する関数（true,falseを返す）
 				const chk = () => {
@@ -29,18 +28,18 @@
 
 				//chkがfalseのとき、警告を表示。trueの時は比較処理を継続する。
 				if (chk()) {
-					return false; //some関数内のreturn false; は処理の継続を意味する
+					return ; //some関数内のreturn false; は処理の継続を意味する
 				}else{
 					//他のレコードに重複があった際に、そのまま保存するか保存をキャンセルするか
 					if (window.confirm('項目が重複しています。このまま保存しますか？')) {
 						window.alert('保存しました');
-						return true;
+						break;
 					}else{
 						 event.error = chkStr + 'は重複しているため、保存キャンセルしました。'
-						return true;
+						break
 					}
 				};
-			});
+			};
 			return event;
 		});
 	};
