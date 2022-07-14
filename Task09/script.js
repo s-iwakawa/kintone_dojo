@@ -17,19 +17,8 @@
 				const currentData = event.record.重複禁止項目.value;
 				const chkStr = lookupArray[count].重複禁止項目.value;
 
-				//保存しようとしている重複禁止項目と他のレコードに保存された項目の比較する関数（true,falseを返す）
-				const chk = () => {
-					if (currentData === chkStr) {
-						return false;
-					}else{
-						return true;
-					}
-				};
-
-				//chkがfalseのとき、警告を表示。trueの時は比較処理を継続する。
-				if (chk()) {
-					return ; //some関数内のreturn false; は処理の継続を意味する
-				}else{
+				//文字列の比較での条件分岐
+				if (currentData === chkStr) {
 					//他のレコードに重複があった際に、そのまま保存するか保存をキャンセルするか
 					if (window.confirm('項目が重複しています。このまま保存しますか？')) {
 						window.alert('保存しました');
@@ -38,12 +27,14 @@
 						 event.error = chkStr + 'は重複しているため、保存キャンセルしました。'
 						break
 					}
+				}else{
+					return ;
 				};
 			};
 			return event;
 		});
 	};
-	
+
 	//新規レコード作成の保存時に上記関数を実行
 	kintone.events.on('app.record.create.submit', avoidDuplication);
 
