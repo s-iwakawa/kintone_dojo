@@ -11,10 +11,7 @@
 
 	const avoidDuplication = (event) => {
 		//日付からハイフンを抜いた文字列を作成
-		const dateData =() => {
-			const dateStr = event.record.日付.value;
-			return dateStr.replace(/-/g, '');
-		} ;
+		const dateStr = event.record.日付.value.replace(/-/g, '');
 
 		//ドロップダウンで選択された製品に対応する製品コードの文字列を作成
 		const productCode = dropdownData[event.record.サイボウズ製品.value];
@@ -23,7 +20,7 @@
 		const manageNumber = event.record.管理番号.value;
 
 		//重複禁止項目に入力する文字列の作成
-		event.record.重複禁止項目_文字列.value = dateData() + '-' + productCode + '-' + manageNumber;
+		event.record.重複禁止項目_文字列.value = `${dateStr}-${productCode}-${manageNumber}`;
 
 		return event;
 	};
