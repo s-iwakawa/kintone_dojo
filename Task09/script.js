@@ -9,20 +9,19 @@
 		const getParams = {
 			app: kintone.app.getId(),
 			fields: paramsField,
-			paramsQuery,
+			query: paramsQuery,
 			totalCount: true
 		};
 
 		return kintone.api(apiURL, 'GET', getParams).then((response) => {
 			//GETリクエストで値が入っていない場合（他の重複禁止項目と重複していない）そのまま保存イベントを終了
-			if (response.totalCount === '0') return event;
-			//他のレコードに重複があった際に、そのまま保存するか保存をキャンセルするか確認する
-			if (window.confirm('項目が重複しています。このまま保存しますか？')) {
-				window.alert('保存しました');
-			}else{
-				event.error = event.record.重複禁止項目.value + 'は重複しているため、保存キャンセルしました。'; //falseの場合はerrorを書き込む
-			}
-			return event;
+			if (response.totalCount !== '0') {
+				//他のレコードに重複があった際に、そのまま保存するか保存をキャンセルするか確認する
+				if (window.confirm('項目が重複しています。このまま保存しますか？')) {
+				} else {
+					return false;
+				}
+			};
 		});
 	};
 
