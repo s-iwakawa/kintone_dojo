@@ -1,6 +1,6 @@
 (() => {
 	'use strict';
-	
+
 	//ドロップダウンの項目のオブジェクトの定義　
 	const dropdownData = {
 		0: 'あくなき探求',
@@ -12,14 +12,14 @@
 	};
 
 	const showEvent = (event) => {
-		event.record.Table.value[0].value.Action5.value = dropdownData[0];
-		for (let count = 1; count < Object.keys(dropdownData).length; count++) {
+		event.record.Table.value = [];
+		Object.keys(dropdownData).forEach((key) => {
 			event.record.Table.value.push({
 				id: null,
 				value: {
 					'Action5': {
 						type: "DROP_DOWN",
-						value: dropdownData[count]
+						value: dropdownData[key]
 					},
 					'課題': {
 						type: "MULTI_LINE_TEXT",
@@ -31,10 +31,10 @@
 					}
 				}
 			});
-		};
+		});
 		return event;
 	};
-	
+
 	kintone.events.on('app.record.create.show', showEvent);
 
 
