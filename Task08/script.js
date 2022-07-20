@@ -4,12 +4,12 @@
   const getRecord = (event) => {
 		const apiURL = kintone.api.url('/k/v1/app/form/fields.json'); //https://…　ではなく、kintone.api.url() を使うことで短縮できる
 		const getParams = {
-			"app": 46,
+			"app": kintone.app.getId(),
 			"lang": "default"
 		};
 
 		return kintone.api(apiURL, 'GET', getParams).then((resp) => {
-			
+
 			//アプリのドロップダウンに格納されている選択肢の配列を取得
 			let dropdownData = resp.properties.Table.fields.Action5.options;
 
@@ -21,23 +21,19 @@
 			});
 
 			//インデックスの昇順で並べ替え
-			orderedDropdown.sort((a,b) => {
-				if (a.index < b.index) return -1;
-				if (a.index > b.index) return 1;
-				return 0;
-			});
+			orderedDropdown.sort((a,b) => a.index < b.index ? -1 : 1);
 
-			//１番目ドロップダウンのaction5の値を挿入
-			event.record.Table.value[0].value.Action5.value = orderedDropdown[0].label;
+			//テーブル初期値を一度削除する
+			event.record.Table.value = [];
 
-			//２番目以降のテーブルにaction5を記載した状態で、追加
-			for (let count = 1; count < Object.keys(orderedDropdown).length; count++) {
+			//テーブルにaction5を記載した状態で、追加
+			Object.keys(orderedDropdown).forEach((key) => {
 				event.record.Table.value.push({
 					id: null,
 					value: {
 						'Action5': {
 							type: "DROP_DOWN",
-							value: orderedDropdown[count].label
+							value: orderedDropdown[key].label
 						},
 						'課題': {
 							type: "MULTI_LINE_TEXT",
@@ -49,7 +45,8 @@
 						}
 					}
 				});
-			};
+			});
+
 			return event;
 		});
   };
