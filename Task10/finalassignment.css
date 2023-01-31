@@ -1,0 +1,87 @@
+.timecard--container {
+	margin: 10px;
+	padding: 10px;
+	background-color: #ffffff;
+	border-radius: 6px;
+	text-align: center;
+}
+
+.timecard--button--wrapper {
+	text-align: center;
+	display: inline-block;
+	width: 50%;
+}
+
+.timecard--date {
+	width: 50%;
+	padding: 3px;
+	background-color: #f1e767;
+	border-radius: 3px;
+	font-size: 20px;
+	margin: auto;
+	display: block;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 50%;
+	width: 125px;
+	height: 125px;
+	font-size: 40px;
+}
+
+.start--button {
+	color: #000;
+	text-shadow: 1px 1px 0 #ffffff;
+	border: 1.5px solid #000;
+	background-color: #FF8932;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f1e767), to(#FF8932));
+  background: -webkit-linear-gradient(top, #f1e767 0%, #FF8932 100%);
+  background: linear-gradient(to bottom, #f1e767 0%, #FF8932 100%);
+	margin: 5px;
+	padding: auto;
+	-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0.5, 0.5);
+  box-shadow: 0 3px 5px rgba(0, 0, 0.5, 0.5);
+}
+
+.start--button:active {
+	background: -webkit-gradient(linear, left top, left bottom, from(#FF8932), to(#f1e767));
+  background: -webkit-linear-gradient(top, #FF8932 0%, #f1e767 100%);
+  background: linear-gradient(to bottom, #FF8932 0%, #f1e767 100%);
+}
+
+.finish--button {
+	color: #000;
+	text-shadow: 1px 1px 0 #ffffff;
+	border: 1.5px solid #000;
+	background-color: #3251FF;
+	background: -webkit-gradient(linear, left top, left bottom, from(#8B9AEC), to(#3251FF));
+  background: -webkit-linear-gradient(top, #8B9AEC 0%, #3251FF 100%);
+  background: linear-gradient(to bottom, #8B9AEC 0%, #3251FF 100%);
+	margin: 5px;
+	padding: auto;
+	-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0.5, 0.5);
+  box-shadow: 0 3px 5px rgba(0, 0, 0.5, 0.5);
+}
+
+.finish--button:active {
+	background: -webkit-gradient(linear, left top, left bottom, from(#3251FF), to(#8B9AEC));
+  background: -webkit-linear-gradient(top, #3251FF 0%, #8B9AEC 100%);
+  background: linear-gradient(to bottom, #3251FF 0%, #8B9AEC 100%);
+}
+
+.timecard--showtime {
+	padding: 10px 0 0 0;
+	width: 40%;
+	height: 20px;
+	display: inline-block;
+	text-align: right;
+}
+
+.timecard--detailedTime {
+	padding: 10px 0 0 15px;
+	width: 40%;
+	height: 20px;
+	display: inline-block;
+	text-align: left;
+}
